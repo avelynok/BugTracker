@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center">
+    <button class="button"><a href="{% url 'edit' id=bug.id %}">Edit</a></button>
+    <button class="button"><a href="{% url 'invalid' id=bug.id %}">Invalid</a></button>
+    <button class="button"><a href="{% url 'inprogress' id=bug.id %}">In Progress</a></button>
+    <button class="button"><a href="{% url 'done' id=bug.id %}">Done</a></button>
+</div>
+
+    <h4>{{ bug.title }} | Author: {{ bug.author }}</h4>
+    <p><strong>Title:</strong> {{ bug.title }}</p>
+    <p><strong>Time:</strong> {{ bug.time }}</p>
+    <p><strong>Description:</strong> {{ bug.description }}</p>
+    <p><strong>Status:</strong> {{ bug.status }}</p>
+    <p><strong>Assigned to:</strong> {{ bug.assigned_to }}</p>
+    <p><strong>Completed by:</strong> {{ bug.completed_by }}</p>
+
+<div class="center">
+    <button class="button"><a href="{% url 'homepage' %}">Home</a></button>
+</div>
+{% endblock %}

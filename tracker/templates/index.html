@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="center">
+        <button class="button"><a href="{% url 'addbug' id=user.id %}">ADD BUG</a></button>
+        <button class="button"><a href="{% url 'signup' %}">SIGNUP</a></button>
+        <button class="button"><a href="{% url 'logoutview' %}">LOGOUT</a></button>
+    </div>
+
+    {% if user.is_authenticated %}
+      <h4>Hi {{ user.username }}!</h4>
+        <h4>Recent Bugs</h4>
+          {% for bug in data%}
+            {% if bug.status == "New" %}
+              <p>
+                <a href = {% url 'buginfo' id=bug.id %}>{{bug.title}}</a> - 
+                Author: <a href="{% url 'authorinfo' user.id %}">{{bug.author}}</a> - 
+                Status: {{bug.status}} 
+              </p>
+            {% endif %}
+          {% endfor %}
+        <h4>Invalid Entries</h4>
+          {% for bug in data%}
+            {% if bug.status == "Invalid" %}
+              <p>
+                <a href = {% url 'buginfo' id=bug.id %}>{{bug.title}}</a> - 
+                Author: <a href="{% url 'authorinfo' user.id %}">{{bug.author}}</a> - 
+                Status: {{bug.status}} 
+              </p>
+            {% endif %}
+          {% endfor %}
+        <h4>Bugs In Progress</h4>
+          {% for bug in data%}
+            {% if bug.status == "In Progress" %}
+              <p>
+                <a href = {% url 'buginfo' id=bug.id %}>{{bug.title}}</a> - 
+                Author: <a href="{% url 'authorinfo' user.id %}">{{bug.author}}</a> - 
+                Status: {{bug.status}} 
+              </p>
+            {% endif %}
+          {% endfor %}
+        <h4>Fixed Bugs</h4>
+          {% for bug in data%}
+            {% if bug.status == "Done" %}
+              <p>
+                <a href = {% url 'buginfo' id=bug.id %}>{{bug.title}}</a> - 
+                Author: <a href="{% url 'authorinfo' user.id %}">{{bug.author}}</a> - 
+                Status: {{bug.status}} 
+              </p>
+            {% endif %}
+          {% endfor %}
+    {% endif %}
+{% endblock %}

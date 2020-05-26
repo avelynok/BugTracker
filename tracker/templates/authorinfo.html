@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Assigned</h4>
+{% for bug in assigned%}
+<p>
+{{ bug}}
+</p>
+{% endfor %}
+
+<h4>Author</h4>
+{% for bug in author %}
+<p>
+{{ bug}}
+</p>
+{% endfor %}
+
+<h4>Done</h4>
+{% for bug in done %}
+<p>
+{{ bug}}
+</p>
+{% endfor %}
+
+<div class="center">
+    <button class="button"><a href="{% url 'homepage' %}">Home</a></button>
+</div>
+{% endblock %}
+
+
+
+
