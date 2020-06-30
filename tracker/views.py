@@ -96,7 +96,7 @@ def InProgress(request, id):
     bug = Bug.objects.get(id=id)
     bug.status = "In Progress"
     bug.assigned_to = request.user
-    bug.assigned_to = None
+    bug.completed_by = None
     bug.save()
     return HttpResponseRedirect(reverse('buginfo', args=(id,)))
 
